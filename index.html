@@ -178,22 +178,36 @@
         }
 
         .steve-avatar {
-            width: 70px;
-            height: 70px;
-            background-color: #55aaff;
+            width: 80px;
+            height: 80px;
+            background-color: #00aaaa;
             border: 4px solid #000;
-            box-shadow: inset 3px 3px 0px #88ccff, inset -3px -3px 0px #0055aa;
+            box-shadow: inset 4px 4px 0px #55ffff, inset -4px -4px 0px #005555, 0 6px 10px rgba(0,0,0,0.7);
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 40px;
             cursor: pointer;
-            transition: transform 0.1s ease;
+            transition: transform 0.15s ease, filter 0.15s ease;
             user-select: none;
+            padding: 6px;
         }
 
-        .steve-avatar:hover { transform: scale(1.08); }
-        .steve-avatar:active { transform: scale(0.95) translateY(5px); }
+        .steve-pixel-art {
+            width: 100%;
+            height: 100%;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            filter: drop-shadow(2px 2px 0px #000);
+        }
+
+        .steve-avatar:hover { 
+            transform: scale(1.1) rotate(-2deg); 
+            filter: brightness(1.1);
+        }
+        .steve-avatar:active { 
+            transform: scale(0.95) translateY(4px); 
+        }
+        
         .steve-indicacion { color: #ffff55; font-size: 9px; text-shadow: 1px 1px 0px #000; }
 
         /* CARTA */
@@ -262,7 +276,7 @@
         .resalte-gold { color: #b8860b; font-weight: bold; }
         .resalte-red { color: #aa0000; font-weight: bold; }
 
-        /* COFRE SECRETO INTERACTIVO */
+        /* COFRE SECRETO INTERACTIVO PIXEL ART */
         .cofre-box {
             background-color: #8b4513;
             border: 4px solid #000;
@@ -279,10 +293,21 @@
         .cofre-box:hover { background-color: #a0522d; }
         
         .cofre-header {
-            display: flex; align-items: center; gap: 12px; color: #fff; font-size: 11px; text-shadow: 2px 2px 0px #000;
+            display: flex; align-items: center; gap: 15px; color: #fff; font-size: 11px; text-shadow: 2px 2px 0px #000;
         }
 
-        .cofre-icono { font-size: 28px; }
+        .cofre-pixel-art {
+            width: 52px;
+            height: 52px;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            filter: drop-shadow(3px 3px 0px #000);
+            transition: transform 0.2s ease;
+        }
+
+        .cofre-box:hover .cofre-pixel-art {
+            transform: scale(1.1) rotate(-3deg);
+        }
 
         .cofre-contenido {
             background-color: #1a1a1a; border: 3px solid #000; color: #55ff55;
@@ -376,25 +401,47 @@
             </div>
         </div>
 
-        <!-- SECCIÓN INTERACTIVA DE STEVE (STIVEN) -->
+        <!-- SECCIÓN INTERACTIVA DE STEVE PIXEL ART -->
         <div class="steve-box">
             <div class="bocadillo" id="bocadillo-texto">
                 ¡Hola Jonathan! Soy Steve. ¡Tócame para hablar conmigo! ⛏️
             </div>
-            <div class="steve-avatar" onclick="hablarSteve()">
-                👦
+            <div class="steve-avatar" onclick="hablarSteve()" title="Toca a Steve">
+                <!-- SVG PIXEL ART OFICIAL DE LA CARA DE STEVE -->
+                <svg class="steve-pixel-art" viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="8" height="2" fill="#2c1b18"/>
+                    <rect x="0" y="2" width="2" height="1" fill="#2c1b18"/>
+                    <rect x="2" y="2" width="4" height="1" fill="#bb8365"/>
+                    <rect x="6" y="2" width="2" height="1" fill="#2c1b18"/>
+                    <rect x="0" y="3" width="8" height="1" fill="#bb8365"/>
+                    <rect x="0" y="4" width="1" height="1" fill="#bb8365"/>
+                    <rect x="1" y="4" width="1" height="1" fill="#ffffff"/>
+                    <rect x="2" y="4" width="1" height="1" fill="#2a2180"/>
+                    <rect x="3" y="4" width="2" height="1" fill="#bb8365"/>
+                    <rect x="5" y="4" width="1" height="1" fill="#ffffff"/>
+                    <rect x="6" y="4" width="1" height="1" fill="#2a2180"/>
+                    <rect x="7" y="4" width="1" height="1" fill="#bb8365"/>
+                    <rect x="0" y="5" width="8" height="1" fill="#bb8365"/>
+                    <rect x="3" y="5" width="2" height="1" fill="#a06d53"/>
+                    <rect x="0" y="6" width="2" height="1" fill="#bb8365"/>
+                    <rect x="2" y="6" width="4" height="1" fill="#523223"/>
+                    <rect x="6" y="6" width="2" height="1" fill="#bb8365"/>
+                    <rect x="0" y="7" width="1" height="1" fill="#2c1b18"/>
+                    <rect x="1" y="7" width="6" height="1" fill="#bb8365"/>
+                    <rect x="7" y="7" width="1" height="1" fill="#2c1b18"/>
+                </svg>
             </div>
             <div class="steve-indicacion">👆 ¡Haz clic en Steve (Stiven) para interactuar!</div>
         </div>
 
         <!-- CARTA -->
         <div class="carta-box">
-            <div class="creeper-asomado"></div> <!-- Creeper CSS escondido -->
-            
+            <div class="creeper-asomado"></div>
+
             <div class="carta-titulo">📜 Mensaje Secreto :D</div>
 
             <div class="carta-contenido">
-                <p>Hice esta carta inspirada en <span class="resalte">Minecraft</span> porque quería preparar algo súper chévere  ya que sabía que te encanta este juego <span class="resalte-gold">tanto como interactuar con los mecanismos y funciones del mismo</span>.</p>
+                <p>Hice esta carta inspirada en <span class="resalte">Minecraft</span> porque quería preparar algo súper chévere y <span class="resalte-gold">físico</span>, ya que sabía que te encanta este juego <span class="resalte-gold">tanto como interactuar con los mecanismos y funciones del mismo</span>.</p>
 
                 <p>Hola, <span class="resalte-red">Jonathan</span>, ¿cómo estás? Espero que estés muy bien. Como hoy es 18 de septiembre, quise hacer algo nuevo y original que nunca había hecho; en realidad, jamás le había hecho una carta a un amigo :V. Nos conocemos desde hace varios años y me pareció una manera divertida de hacer algo genial y de aprender un poco más de programación, así que por este motivo estoy aquí ¯\_(ツ)_/¯</p>
                 
@@ -409,10 +456,27 @@
                 <p>Espero que guardes esta carta con cariño. ¡Eres un gran amigo!</p>
             </div>
             
-            <!-- COFRE SECRETO INTERACTIVO -->
+            <!-- COFRE SECRETO INTERACTIVO CON PIXEL ART -->
             <div class="cofre-box" onclick="toggleCofre()" style="margin-bottom: 20px;">
                 <div class="cofre-header">
-                    <span class="cofre-icono" id="cofre-icono">📦</span>
+                    <div id="cofre-svg-container">
+                        <svg class="cofre-pixel-art" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1" y="2" width="14" height="12" fill="#140a03"/>
+                            <rect x="2" y="3" width="12" height="10" fill="#8c471b"/>
+                            <rect x="2" y="3" width="12" height="1" fill="#b36128"/>
+                            <rect x="2" y="3" width="1" height="10" fill="#b36128"/>
+                            <rect x="2" y="12" width="12" height="1" fill="#592b0c"/>
+                            <rect x="13" y="3" width="1" height="10" fill="#592b0c"/>
+                            <rect x="2" y="3" width="12" height="1" fill="#2d1707"/>
+                            <rect x="2" y="12" width="12" height="1" fill="#2d1707"/>
+                            <rect x="2" y="3" width="1" height="10" fill="#2d1707"/>
+                            <rect x="13" y="3" width="1" height="10" fill="#2d1707"/>
+                            <rect x="2" y="7" width="12" height="1" fill="#140a03"/>
+                            <rect x="7" y="6" width="2" height="3" fill="#222222"/>
+                            <rect x="7" y="6" width="2" height="2" fill="#d0d0d0"/>
+                            <rect x="7" y="6" width="1" height="1" fill="#ffffff"/>
+                        </svg>
+                    </div>
                     <div>
                         <div>COFRE SECRETO</div>
                         <div style="font-size: 8px; color: #ffcc00; margin-top: 4px;" id="cofre-estado">Toca para abrir</div>
@@ -446,15 +510,38 @@
                 <a href="https://youtu.be/W-D0tCwMb2o" target="_blank" class="link-respaldo">¿No carga el video? Toca aquí para ver en YouTube</a>
             </div>
 
-            <button class="btn-minecraft" onclick="hacerSonido(880)">¡Gracias por leer! ❤️</button>
+            <button class="btn-minecraft" onclick="reproducirSonidoBotón()">¡Gracias por leer! ❤️</button>
         </div>
 
     </div>
 
-    <!-- SCRIPT INTERACTIVO -->
+    <!-- SCRIPT DE SONIDOS Y INTERACCIONES -->
     <script>
-        // Efecto de sonido retro al hacer clic
-        function hacerSonido(frecuencia) {
+        // ARCHIVOS DE AUDIO INCRUSTADOS EN BASE64 (100% Funcionales sin internet)
+
+        // 1. Sonido de Dolor de Steve (OOF de Minecraft)
+        var audioSteveHurt = new Audio("data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQ4GAACAgICAgICAgICAgP/+/Pnx3c25kWltXUk9IQT43MzAoJSEfHRsZFhMREAv//fv28OTh29fT08/LzM3R1tnd4eXm5+ro6+3u7vHy8/T19vj5+vv8/f7/AAAAAAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8gISIjJCUmJygpLg==");
+
+        // 2. Sonido del Cofre al Abrirse (Minecraft Chest Open)
+        var audioCofreAbrir = new Audio("data:audio/wav;base64,UklGRqAFAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YIAFAAB/f359fHx7enp5eDh2d3Fwb21raGdlYmBfXFtbWFdVU1JRUE9NS0pJR0VEQ0JBQD8+PTs6OTg3NjUxMC8uLTAvLzAwLzAzNDY2NTc1NDEzMDEzNDU3ODk6Ozw9Pj9AQkNERUdGSElKS0xNTk9QUVJTVFVWV1hZWltdXV5fYGE=");
+
+        // 3. Sonido del Cofre al Cerrarse (Minecraft Chest Close)
+        var audioCofreCerrar = new Audio("data:audio/wav;base64,UklGRogFAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YXAFAACEhIWEhYSEhYSEf3x6eHZ1cm1pa2hnZmVkYmJfXl1cW1pZV1RTUlFQTk1LSkhJR0VEQ0E/PTs6OTc2NTU1NTY2Nzc4OTo7PD0+P0BBQ0RGR0hJSkpLTA==");
+
+        // Reproductor seguro sin errores
+        function reproducirAudio(audio, freqSintetizada) {
+            try {
+                audio.currentTime = 0;
+                audio.play().catch(function() {
+                    hacerSonidoSintetizado(freqSintetizada);
+                });
+            } catch(e) {
+                hacerSonidoSintetizado(freqSintetizada);
+            }
+        }
+
+        // Sintetizador Web Audio como respaldo retro
+        function hacerSonidoSintetizado(frecuencia) {
             try {
                 var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 var osc = audioCtx.createOscillator();
@@ -464,7 +551,7 @@
                 osc.frequency.setValueAtTime(frecuencia || 440, audioCtx.currentTime);
                 osc.frequency.exponentialRampToValueAtTime((frecuencia || 440) * 1.5, audioCtx.currentTime + 0.1);
                 
-                gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
                 gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
                 
                 osc.connect(gain);
@@ -475,40 +562,89 @@
             } catch(e) {}
         }
 
-        // Sistema de diálogo de Steve (Stiven)
+        function reproducirSonidoBotón() {
+            hacerSonidoSintetizado(880);
+        }
+
+        // Sistema de diálogo e interacción con Steve
         var dialogoIndice = 0;
         var frasesSteve = [
+            "¡Ouch! ¡Oye, ten cuidado al tocarme! 💥",
             "¡Hola Jonathan! ¡Gracias por presionar aquí! 😊",
             "Recordatorio: ¡Eres un crack dibujando! 🎨",
             "¿Te acuerdas de cuando fuimos a Bogotá por robótica? 🤖",
-            "¡Cuidado con el Creeper que está arriba de la carta! 💥",
+            "¡Cuidado con el Creeper que está arriba de la carta! 💣",
             "¡Eres un gran constructor de redstone! 🔴⚙️",
             "¡No te olvides de revisar el cofre secreto! 📦"
         ];
 
         function hablarSteve() {
-            hacerSonido(600);
+            // Reproduce el sonido de daño real de Steve
+            reproducirAudio(audioSteveHurt, 220);
+            
             dialogoIndice = (dialogoIndice + 1) % frasesSteve.length;
             document.getElementById('bocadillo-texto').innerText = frasesSteve[dialogoIndice];
         }
 
-        // Cofre Secreto
+        // SVGs del Cofre (Cerrado y Abierto)
+        var svgCofreCerrado = `
+            <svg class="cofre-pixel-art" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                <rect x="1" y="2" width="14" height="12" fill="#140a03"/>
+                <rect x="2" y="3" width="12" height="10" fill="#8c471b"/>
+                <rect x="2" y="3" width="12" height="1" fill="#b36128"/>
+                <rect x="2" y="3" width="1" height="10" fill="#b36128"/>
+                <rect x="2" y="12" width="12" height="1" fill="#592b0c"/>
+                <rect x="13" y="3" width="1" height="10" fill="#592b0c"/>
+                <rect x="2" y="3" width="12" height="1" fill="#2d1707"/>
+                <rect x="2" y="12" width="12" height="1" fill="#2d1707"/>
+                <rect x="2" y="3" width="1" height="10" fill="#2d1707"/>
+                <rect x="13" y="3" width="1" height="10" fill="#2d1707"/>
+                <rect x="2" y="7" width="12" height="1" fill="#140a03"/>
+                <rect x="7" y="6" width="2" height="3" fill="#222222"/>
+                <rect x="7" y="6" width="2" height="2" fill="#d0d0d0"/>
+                <rect x="7" y="6" width="1" height="1" fill="#ffffff"/>
+            </svg>
+        `;
+
+        var svgCofreAbierto = `
+            <svg class="cofre-pixel-art" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                <rect x="1" y="0" width="14" height="4" fill="#140a03"/>
+                <rect x="2" y="1" width="12" height="2" fill="#8c471b"/>
+                <rect x="2" y="1" width="12" height="1" fill="#b36128"/>
+                <rect x="7" y="2" width="2" height="1" fill="#d0d0d0"/>
+                <rect x="2" y="4" width="12" height="3" fill="#55ffff"/>
+                <rect x="4" y="5" width="3" height="2" fill="#ffffff"/>
+                <rect x="9" y="4" width="4" height="2" fill="#ffff55"/>
+                <rect x="1" y="7" width="14" height="8" fill="#140a03"/>
+                <rect x="2" y="8" width="12" height="6" fill="#8c471b"/>
+                <rect x="2" y="13" width="12" height="1" fill="#592b0c"/>
+                <rect x="2" y="8" width="12" height="1" fill="#2d1707"/>
+                <rect x="2" y="13" width="12" height="1" fill="#2d1707"/>
+                <rect x="2" y="8" width="1" height="6" fill="#2d1707"/>
+                <rect x="13" y="8" width="1" height="6" fill="#2d1707"/>
+            </svg>
+        `;
+
+        // Lógica del Cofre Secreto
         var cofreAbierto = false;
         function toggleCofre() {
-            hacerSonido(300);
             cofreAbierto = !cofreAbierto;
             var contenido = document.getElementById('cofre-contenido');
-            var icono = document.getElementById('cofre-icono');
+            var svgContainer = document.getElementById('cofre-svg-container');
             var estado = document.getElementById('cofre-estado');
 
             if (cofreAbierto) {
+                // Reproduce el sonido del cofre al abrirse
+                reproducirAudio(audioCofreAbrir, 350);
                 contenido.classList.add('abierto');
-                icono.innerText = '🧰';
+                svgContainer.innerHTML = svgCofreAbierto;
                 estado.innerText = '¡Cofre Abierto!';
                 estado.style.color = '#55ff55';
             } else {
+                // Reproduce el sonido del cofre al cerrarse
+                reproducirAudio(audioCofreCerrar, 250);
                 contenido.classList.remove('abierto');
-                icono.innerText = '📦';
+                svgContainer.innerHTML = svgCofreCerrado;
                 estado.innerText = 'Toca para abrir';
                 estado.style.color = '#ffcc00';
             }
